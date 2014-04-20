@@ -7,8 +7,26 @@ body{font-family:arial;color:blue;}
 div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
 .out{display:inline-block;border:1px solid silver;min-height:1em;min-width:1em;}
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="html2canvas.js"></script>
+<script>
+  var running = false;
+  var working = false;
+  function startcapture()
+  {
+    running = true;
+  }
+  function stopcapture()
+  {
+    running = false;
+  }
+  setInterval(function()
+  {
+    var o1 = jQuery('.out1');
+    var o2 = jQuery('.outstatus');
+    o2.html('<div>running: '+running+'</div><div>working: '+working+'</div>');
+  },500);
+</script>
 </head>
 
 <body>
@@ -16,7 +34,7 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
 <div>
 <button type="button" onclick="startcapture();">start</button>
 <button type="button" onclick="stopcapture();">stop</button>
-<span class="out"></span>
+<span class="out out1"></span><span class="out outstatus"></span>
 </div>
 
 </body>
