@@ -33,7 +33,9 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
     working = true;
     html2canvas(document.body, {
       onrendered: function(canvas) {
-      //document.body.appendChild(canvas);
+      var dt = canvas.toDataURL('image/png');
+      // todo: upload the frame to your server via xhr request...
+        console.log(dt);
         working = false;
       }
     });
