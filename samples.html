@@ -26,6 +26,19 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
     var o2 = jQuery('.outstatus');
     o2.html('<div>running: '+running+'</div><div>working: '+working+'</div>');
   },500);
+  function capture()
+  {
+    if(working){return;}
+    if(!running){return;}
+    working = true;
+    html2canvas(document.body, {
+      onrendered: function(canvas) {
+      //document.body.appendChild(canvas);
+        working = false;
+      }
+    });
+    
+  }
 </script>
 </head>
 
