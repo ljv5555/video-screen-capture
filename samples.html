@@ -40,7 +40,8 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
       onrendered: function(canvas) {
       var dt = canvas.toDataURL('image/png');
       // todo: upload the frame to your server via xhr request...
-        window.imagesa.push('<div><img src="'+dt+'"/></div>');
+        var style='style="border:1px solid silver;margin:5px 5px 5px 5px;"';
+        window.imagesa.push('<div '+style+'><img src="'+dt+'"/></div>');
         working = false;
       }
     });
