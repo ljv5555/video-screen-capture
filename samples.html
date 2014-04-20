@@ -10,6 +10,7 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="html2canvas.js"></script>
 <script>
+  var window['images']=[];
   var running = false;
   var working = false;
   function startcapture()
@@ -18,6 +19,10 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
   }
   function stopcapture()
   {
+    var w = window.open();
+    setTimeout(function(){
+      w.document.write(window.images.join('\r\n'));
+    },1000);
     running = false;
   }
   setInterval(function()
@@ -35,7 +40,7 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
       onrendered: function(canvas) {
       var dt = canvas.toDataURL('image/png');
       // todo: upload the frame to your server via xhr request...
-        console.log(dt);
+        window.images.push('<div><img src="'+dt+'"/></div>');
         working = false;
       }
     });
