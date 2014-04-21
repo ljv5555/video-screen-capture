@@ -12,12 +12,21 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
 <script>
 function capture()
 {
-  
+  html2canvas(jQuery('.in1')[0], {
+      onrendered: function(canvas) {
+      var dt = canvas.toDataURL('image/png');
+      // todo: upload the frame to your server via xhr request...
+        jQuery('.out').html('<img src="'+dt+'" style="width:320px;height:240px;"/>');
+        var style='style="border:1px solid silver;margin:5px 5px 5px 5px;"';
+        window.imagesa.push('<div '+style+'><img src="'+dt+'"/></div>');
+        working = false;
+      }
+    });
   
 }
 </script>
 <body>
-<div style="border:1px solid silver;">
+<div class="in1" style="border:1px solid silver;">
 <textarea></textarea>
 </div>
 <div><button type="button" onclick="capture()">capture</button></div>
