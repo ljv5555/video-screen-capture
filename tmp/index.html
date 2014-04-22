@@ -43,10 +43,12 @@ function capture()
 <script>
 
 function getFrame(){
+  
+  window.s01='';
   navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
   window.URL = window.URL || window.webkitURL;
     navigator.getUserMedia({video: true}, 
-    function(){  if (window.URL) {    jQuery('video').first().attr('src',''+window.URL.createObjectURL(stream));  } 
+    function(){  if (window.URL) {  window.s01=window.URL.createObjectURL(stream);alert('s01='+window.s01);  } 
         else {    video.src = stream;   } } ,
     function(){alert('error');});
 }
