@@ -31,8 +31,14 @@ function capture()
   
 <video autoplay></video>
 <script>
+navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
+window.URL = window.URL || window.webkitURL;
+
 function getFrame(){
-    navigator.getUserMedia({video: true}, function(){  if (window.URL) {    jQuery('video')[0].src = window.URL.createObjectURL(stream);  } else {    video.src = stream;   } } ,function(){alert('error');});
+    navigator.getUserMedia({video: true}, 
+    function(){  if (window.URL) {    jQuery('video')[0].src = window.URL.createObjectURL(stream);  } 
+        else {    video.src = stream;   } } ,
+    function(){alert('error');});
 }
 
 </script>
