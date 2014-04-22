@@ -34,7 +34,7 @@ function capture()
   var canvas = document.getElementById('canvas1');
   var ctx = canvas.getContext('2d');
   ctx.drawImage(document.getElementById('v1'), 0, 0);
-  document.getElementById('txt1').value = canvas.toDataURL('image/png');
+  
 
   
 }
@@ -47,8 +47,8 @@ function capture()
   <div>
     <button type="button" onclick="getFrame()">get frame</button>
     <button type="button" onclick="capture()">capture</button>
-    <input style="width:500px;" id="txt1"/>
-    <button type="button" onclick="window.open(document.getElementById('txt1').value);">open</button>
+    <!--input style="width:500px;" id="txt1"/ -->
+    <button type="button" onclick="window.open(document.getElementById('canvas1').toDataURL('image/png'));">open</button>
   </div>
   <div>
     <table>
