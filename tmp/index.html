@@ -29,7 +29,16 @@ function capture()
 <div class="in1" style="border:1px solid silver;">
 
   
-<video autoplay></video>
+<video style="width:320px;" autoplay></video>
+<button type="button" onclick="getFrame()">get frame</button>  
+</div>
+<div><button type="button" onclick="capture()">capture</button></div>
+<div style="border:1px solid silver;">
+<div>out</div>
+<div class="out"></div>
+</div>
+
+
 <script>
 navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
 window.URL = window.URL || window.webkitURL;
@@ -42,12 +51,8 @@ function getFrame(){
 }
 
 </script>
-<button type="button" onclick="getFrame()">get frame</button>  
-</div>
-<div><button type="button" onclick="capture()">capture</button></div>
-<div style="border:1px solid silver;">
-<div>out</div>
-<div class="out"></div>
-</div>
+
+
+
 </body>
 </html>
