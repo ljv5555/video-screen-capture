@@ -24,6 +24,8 @@ function getFrame(){
 }
 function capture()
 {
+  jQuery('#canvas1').css('width',jQuery('#v1').width());
+  jQuery('#canvas1').css('height',jQuery('#v1').height());
   var canvas = document.getElementById('canvas1');
   var ctx = canvas.getContext('2d');
   ctx.drawImage(document.getElementById('v1'), 0, 0);
@@ -41,6 +43,7 @@ function capture()
     <button type="button" onclick="getFrame()">get frame</button>
     <button type="button" onclick="capture()">capture</button>
     <input style="width:500px;" id="txt1"/>
+    <button type="button" onclick="window.open(document.getElementById('txt1').value);">open</button>
   </div>
   <div>
     <table>
