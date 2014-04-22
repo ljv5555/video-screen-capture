@@ -22,13 +22,27 @@ function getFrame(){
         else {    video.src = stream;   } } ,
     function(){alert('error');});
 }
+function capture()
+{
+  var canvas = document.getElementById('canvas1');
+  var ctx = canvas.getContext('2d');
+  ctx.drawImage(video, 0, 0);
+  document.getElementById('txt1').value = canvas.toDataURL('image/png');
+
+  
+}
 
 </script>
 
 <body>
 
 <div class="in1" style="border:1px solid silver;">
-  <div><button type="button" onclick="getFrame()">get frame</button></div>
+  <div>
+    <button type="button" onclick="getFrame()">get frame</button>
+    <button type="button" onclick="capture()">capture</button>
+    <input style="width:500px;" id="txt1"/>
+    <canvas id="canvas1" style="border:5px solid green;"></canvas>
+  </div>
   <div><video id="v1" style="border:5px solid red;" autoplay></video></div>
 </div>
 
