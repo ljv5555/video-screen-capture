@@ -27,7 +27,7 @@ function capture()
 </script>
 <body>
 
-<video style="width:320px;border:5px solid red;" autoplay></video>
+<video id="v1" style="width:320px;border:5px solid red;" autoplay></video>
 <div class="in1" style="border:1px solid silver;">
 
   
@@ -46,7 +46,7 @@ window.URL = window.URL || window.webkitURL;
 
 function getFrame(){
     navigator.getUserMedia({video: true}, 
-    function(){  if (window.URL) {    jQuery('video')[0].src = window.URL.createObjectURL(stream);  } 
+    function(){  if (window.URL) {    document.getElementById('v1').src = window.URL.createObjectURL(stream);  } 
         else {    video.src = stream;   } } ,
     function(){alert('error');});
 }
