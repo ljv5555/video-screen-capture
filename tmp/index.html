@@ -41,12 +41,12 @@ function capture()
 
 
 <script>
-navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
-window.URL = window.URL || window.webkitURL;
 
 function getFrame(){
+  navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
+  window.URL = window.URL || window.webkitURL;
     navigator.getUserMedia({video: true}, 
-    function(){  if (window.URL) {    document.getElementById('v1').src = window.URL.createObjectURL(stream);  } 
+    function(){  if (window.URL) {    jQuery('video').first().attr('src',''+window.URL.createObjectURL(stream));  } 
         else {    video.src = stream;   } } ,
     function(){alert('error');});
 }
