@@ -26,7 +26,7 @@ function capture()
 {
   var canvas = document.getElementById('canvas1');
   var ctx = canvas.getContext('2d');
-  ctx.drawImage(video, 0, 0);
+  ctx.drawImage(document.getElementById('v1'), 0, 0);
   document.getElementById('txt1').value = canvas.toDataURL('image/png');
 
   
@@ -41,9 +41,15 @@ function capture()
     <button type="button" onclick="getFrame()">get frame</button>
     <button type="button" onclick="capture()">capture</button>
     <input style="width:500px;" id="txt1"/>
-    <canvas id="canvas1" style="border:5px solid green;"></canvas>
   </div>
-  <div><video id="v1" style="border:5px solid red;" autoplay></video></div>
+  <div>
+    <table>
+      <tr>
+        <td><canvas id="canvas1" style="border:5px solid green;"></canvas></td>
+        <td><video id="v1" style="border:5px solid red;" autoplay></video></td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 
