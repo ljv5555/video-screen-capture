@@ -8,37 +8,7 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
 .out{display:inline-block;border:1px solid silver;min-height:1em;min-width:1em;}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="../html2canvas.js"></script>
-<script>
-function capture()
-{
-  html2canvas(jQuery('.in1')[0], {
-      onrendered: function(canvas) {
-      var dt = canvas.toDataURL('image/png');
-      // todo: upload the frame to your server via xhr request...
-        jQuery('.out').html('<img src="'+dt+'" style="width:640px;"/>');
-        var style='style="border:1px solid silver;margin:5px 5px 5px 5px;"';
-        window.imagesa.push('<div '+style+'><img src="'+dt+'"/></div>');
-        working = false;
-      }
-    });
-  
-}
-</script>
-<body>
-
-<video id="v1" style="width:320px;border:5px solid red;" autoplay></video>
-<div class="in1" style="border:1px solid silver;">
-
-  
-<button type="button" onclick="getFrame()">get frame</button>  
-</div>
-<div><button type="button" onclick="capture()">capture</button></div>
-<div style="border:1px solid silver;">
-<div>out</div>
-<div class="out"></div>
-</div>
-
+<!--script src="../html2canvas.js"></script-->
 
 <script>
 
@@ -54,6 +24,15 @@ function getFrame(){
 }
 
 </script>
+
+<body>
+
+<div class="in1" style="border:1px solid silver;">
+  <div><button type="button" onclick="getFrame()">get frame</button></div>
+  <div><video id="v1" style="border:5px solid red;" autoplay></video></div>
+</div>
+
+
 
 
 
