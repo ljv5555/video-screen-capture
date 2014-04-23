@@ -42,8 +42,8 @@ var cpVideo = function(captureIntervalMs,maxMs){
     
   }
   var ci = setInterval(function(){capture();},captureIntervalMs);
-  this.captureBegin = startCapture;
-  this.captureEnd = stopCapture;
+  this.captureBegin = startcapture;
+  this.captureEnd = stopcapture;
   };
   return new cpVideo();
   })();
