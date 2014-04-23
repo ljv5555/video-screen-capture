@@ -13,7 +13,7 @@ var cpVideo = function(captureIntervalMs,maxMs){
     running = true;
     if(maxMs>0)
     {
-      setTimeout(function(){stopCapture();},maxMs);
+      setTimeout(function(){stopcapture();},maxMs);
     }
   };
   var stopcapture = function()
