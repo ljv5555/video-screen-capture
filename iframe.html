@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>video capture</title>
+<style>
+body{font-family:arial;color:blue;}
+div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
+.out{display:inline-block;border:1px solid silver;min-height:1em;min-width:1em;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="html2canvas.js"></script>
+<script>
+  window['imagesa']=[];
+  var running = false;
+  var working = false;
+  function startcapture()
+  {
+    running = true;
+  }
+  function stopcapture()
+  {
+    var w = window.open();
+    setTimeout(function(){
+      w.document.write(window.imagesa.join('\r\n'));
+    },1000);
+    running = false;
+  }
+  setInterval(function()
+  {
+    var o1 = jQuery('.out1');
+    var o2 = jQuery('.outstatus');
+    o2.html('<div>running: '+running+'</div><div>working: '+working+'</div>');
+  },500);
+  function capture()
+  {
+    if(working){return;}
+    if(!running){return;}
+    working = true;
+    html2canvas(document.body, {
+      onrendered: function(canvas) {
+      var dt = canvas.toDataURL('image/png');
+      // todo: upload the frame to your server via xhr request...
+        var style='style="border:1px solid silver;margin:5px 5px 5px 5px;"';
+        window.imagesa.push('<div '+style+'><img src="'+dt+'"/></div>');
+        working = false;
+      }
+    });
+    
+  }
+  setInterval(function(){capture();},1000);
+</script>
+</head>
+
+<body>
+<h3>JS html video capture sample</h3>
+<div>
+<button type="button" onclick="startcapture();">start</button>
+<button type="button" onclick="stopcapture();">stop</button>
+<span class="out out1"></span><span class="out outstatus"></span>
+</div>
+<p/>
+<div>
+  <div>URL: <input id="u"/><input type="button" value="go" onclick="document.getElementById('f1').location.href=document.getElementById('u').value;"/></div>
+  <div><iframe style="width:95%;height:500px;" src="https://duckduckgo.com/"></iframe></div>
+</div>
+
+</body>
+
+</html>
