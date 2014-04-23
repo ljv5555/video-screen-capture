@@ -22,7 +22,7 @@ var cpVideo = function(captureIntervalMs,maxMs){
     else{running=false;}
     var w = window.open();
     setTimeout(function(){
-      w.document.write(window.imagesa.join('\r\n'));
+      w.document.write(imagesa.join('\r\n'));
     },1000);
     if(ci){clearInterval(ci);}
   };
