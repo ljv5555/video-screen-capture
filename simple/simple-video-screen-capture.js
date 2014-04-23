@@ -34,8 +34,8 @@ var cpVideo = function(captureIntervalMs,maxMs){
     html2canvas(document.body, {
       onrendered: function(canvas) {
       var dt = canvas.toDataURL('image/png');
-        var style='style="border:1px solid silver;margin:5px 5px 5px 5px;"';
-        imagesa.push('<div '+style+'><img src="'+dt+'"/></div>');
+        var style='style="border:1px solid silver;margin:5px 5px 5px 5px;width:800px;"';
+        imagesa.push('<div><img style="'+style+'" src="'+dt+'"/></div>');
         working = false;
       }
     });
