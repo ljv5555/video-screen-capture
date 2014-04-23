@@ -22,12 +22,10 @@ function capture()
 {
   var canvas = document.getElementById('canvas1');
   var video = document.getElementById('v1');
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-    
-  var canvas = document.getElementById('canvas1');
+  canvas.width = video.videoWidth/2;
+  canvas.height = video.videoHeight/2;
   var ctx = canvas.getContext('2d');
-  ctx.drawImage(document.getElementById('v1'), 0, 0);
+  ctx.drawImage(document.getElementById('v1'), 0, 0,canvas.width,canvas.height);
   
 }
 
