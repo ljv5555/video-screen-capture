@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>video capture</title>
+<style>
+body{font-family:arial;color:blue;}
+div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
+.out{display:inline-block;border:1px solid silver;min-height:1em;min-width:1em;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--script src="../html2canvas.js"></script-->
+
+<script>
+
+function getFrame(){
+  
+  window.s01='';
+  navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
+  window.URL = window.URL || window.webkitURL;
+    navigator.getUserMedia({video: true}, 
+    function(stream){  if (window.URL) {  jQuery('#v1').attr('src',window.URL.createObjectURL(stream));  } 
+        else {    video.src = stream;   } } ,
+    function(){alert('error');});
+}
+function capture()
+{
+  var canvas = document.getElementById('canvas1');
+  var video = document.getElementById('v1');
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+    
+  jQuery('#canvas1').css('width',jQuery('#v1').width());
+  jQuery('#canvas1').css('height',jQuery('#v1').height());
+  var canvas = document.getElementById('canvas1');
+  var ctx = canvas.getContext('2d');
+  ctx.drawImage(document.getElementById('v1'), 0, 0);
+  
+
+  
+}
+
+</script>
+
+<body>
+
+<div class="in1" style="border:1px solid silver;">
+  <div>
+    <button type="button" onclick="getFrame()">get frame</button>
+    <button type="button" onclick="capture()">capture</button>
+    <!--input style="width:500px;" id="txt1"/ -->
+    <button type="button" onclick="window.open(document.getElementById('canvas1').toDataURL('image/jpg'));">open</button>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td><canvas id="canvas1" style="border:5px solid green;"></canvas></td>
+        <td><video id="v1" style="border:5px solid red;" autoplay></video></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>
