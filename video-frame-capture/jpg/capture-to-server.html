@@ -1,9 +1,75 @@
-<form target="frame1" method="post" action="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev">
+<!DOCTYPE html>
+<html>
+<head>
+<title>video capture</title>
+<style>
+body{font-family:arial;color:blue;}
+div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
+.out{display:inline-block;border:1px solid silver;min-height:1em;min-width:1em;}
+</style>
+<script>
+function getFrame(){
+  var video = document.getElementById('v1');
+  window.s01='';
+  navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
+  window.URL = window.URL || window.webkitURL;
+    navigator.getUserMedia({video: true}, 
+    function(stream){  if (window.URL) {  video.src = (window.URL.createObjectURL(stream));  } 
+        else {    video.src = stream;   } } ,
+    function(){alert('error');});
+}
+function capture()
+{
+  var canvas = document.getElementById('canvas1');
+  var video = document.getElementById('v1');
+  canvas.width = video.videoWidth/2;
+  canvas.height = video.videoHeight/2;
+  var ctx = canvas.getContext('2d');
+  ctx.drawImage(document.getElementById('v1'), 0, 0,canvas.width,canvas.height);
+  var ss = document.getElementById('canvas1').toDataURL('image/jpeg',0.70);
+  document.getElementById('data').value='<img src="'+ss+'"/>';
+  document.getElementById('form1').submit();
+  document.getElementById('status1').innerHTML="Saved frame: "+(new Date());
+}
+
+</script>
+
+<body>
+
+<div class="in1" style="border:1px solid silver;">
+  <div>
+    <button type="button" onclick="getFrame()">get frame</button>
+    <button type="button" onclick="capture()">capture photo</button>
+    <button type="button" onclick="setInterval(function(){capture();},10000);">capture video</button>
+    <!--input style="width:500px;" id="txt1"/ -->
+    <button type="button" onclick="window.open(document.getElementById('canvas1').toDataURL('image/jpeg',0.70));">open</button>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td><canvas id="canvas1" style="border:5px solid green;"></canvas></td>
+        <td><video id="v1" style="border:5px solid red;" autoplay></video></td>
+      </tr>
+    </table>
+    <div>
+<form id="form1" target="frame1" method="post" action="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev">
 <input name="action" value="store"/>
 <input name="uid1" value="test1"/>
 <input name="uid1" value="camera1"/>
-<textarea name="data" id="data">this is a test.</textarea>
+<input name="data" id="data" type="hidden" value="test"/>
 <input type="submit" value="go" id="submit1"/>
 </form>
 <iframe style="width:10px;height:10px;" name="frame1" id="frame1" src="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=get"></iframe>
+
+    </div>
+  </div>
+</div>
+
+<div id="status1"></div>
+
+
+
+</body>
+</html>
+
 
