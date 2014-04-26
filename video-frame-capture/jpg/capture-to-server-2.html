@@ -33,9 +33,9 @@ function capture()
   ctx.drawImage(document.getElementById('v1'), 0, 0,canvas.width,canvas.height);
   var ss = document.getElementById('canvas1').toDataURL('image/jpeg',0.70);
   document.getElementById('data').value='<img src="'+ss+'"/>';
+  document.getElementById('frame1').onload = function(){window.working=false;}
   document.getElementById('form1').submit();
   document.getElementById('status1').innerHTML="Saved frame: "+(new Date());
-  window.working=false;
   
   }
 }
@@ -48,7 +48,7 @@ function capture()
   <div>
     <button type="button" onclick="getFrame()">get frame</button>
     <button type="button" onclick="capture()">capture photo</button>
-    <button type="button" onclick="setInterval(function(){capture();},10000);">capture video</button>
+    <button type="button" onclick="setInterval(function(){capture();},1000);">capture video</button>
     <!--input style="width:500px;" id="txt1"/ -->
     <button type="button" onclick="window.open(document.getElementById('canvas1').toDataURL('image/jpeg',0.70));">open</button>
   </div>
