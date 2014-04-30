@@ -60,7 +60,7 @@ function capture()
 </div>
 <div class="in1" style="border:1px solid silver;">
   <div>
-    <div>Step 1: </div><button type="button" onclick="getFrame()">get frame</button></div>
+    <div>Step 1: <button type="button" onclick="getFrame()">get frame</button></div>
     <div>Step 2: <button type="button" onclick="window.cint=setInterval(function(){capture();},1000);">capture video</button></div>
     <!--input style="width:500px;" id="txt1"/ -->
     <div>Step 3: <button type="button" onclick="if(window.cint)clearInterval(window.cint);">stop capture</button></div>
