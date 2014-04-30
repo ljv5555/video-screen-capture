@@ -4,7 +4,7 @@
 <script>
 function pleaseAuth()
 {
-  var ad = dovument.getElementById('authdiv');
+  var ad = document.getElementById('authdiv');
   ad.style.display='block';
   var ah = '<a href="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=auth&url='+window.location.href+'"></a>';
   ad.innerHTML = ad.innerHTML.replace(/LINKHTML/,ah);
