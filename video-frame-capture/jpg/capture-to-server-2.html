@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+function pleaseAuth()
+{
+  var ad = dovument.getElementById('authdiv');
+  ad.style.display='block';
+  var ah = '<a href="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=auth&url='+window.location.href+'"></a>';
+  ad.innerHTML = ad.innerHTML.replace(/LINKHTML/,ah);
+}
+</script>
 <title>video capture</title>
 <style>
 body{font-family:arial;color:blue;}
@@ -41,9 +50,14 @@ function capture()
 }
 
 </script>
-
+<style>
+  .authdiv{margin:1em 1em;padding:1em 1em;background:pink;color:red;font-family:helvetica;
+  font-size:24px;display:none;}
+</style>
 <body>
-
+<div class="authdiv" id="authdiv">
+  Please authenticate the script for Google Drive by clicking LINKHTML.
+</div>
 <div class="in1" style="border:1px solid silver;">
   <div>
     <button type="button" onclick="getFrame()">get frame</button>
@@ -76,6 +90,8 @@ function capture()
 <div id="status1"></div>
 
 
+<script src="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=authtest"
+ onerror="pleaseAuth();"></script>
 
 </body>
 </html>
