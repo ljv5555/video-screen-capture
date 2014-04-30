@@ -60,10 +60,11 @@ function capture()
 </div>
 <div class="in1" style="border:1px solid silver;">
   <div>
-<!--    <button type="button" onclick="getFrame()">get frame</button> -->
-    <button type="button" onclick="getFrame();setInterval(function(){capture();},1000);">capture video</button>
+    <div>Step 1: </div><button type="button" onclick="getFrame()">get frame</button></div>
+    <div>Step 2: <button type="button" onclick="window.cint=setInterval(function(){capture();},1000);">capture video</button></div>
     <!--input style="width:500px;" id="txt1"/ -->
-    <button type="button" onclick="window.open('https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=get');">open result</button>
+    <div>Step 3: <button type="button" onclick="if(window.cint)clearInterval(window.cint);">stop capture</button></div>
+    <div>Step 4: <button type="button" onclick="window.open('https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=get');">open result</button></div>
   </div>
   <div>
     <table>
