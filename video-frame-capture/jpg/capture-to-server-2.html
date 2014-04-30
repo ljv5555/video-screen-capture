@@ -6,7 +6,7 @@ function pleaseAuth()
 {
   var ad = document.getElementById('authdiv');
   ad.style.display='block';
-  var ah = '<a href="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=auth&url='+window.location.href+'"></a>';
+  var ah = '<a href="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=auth&url='+window.location.href+'">here</a>';
   ad.innerHTML = ad.innerHTML.replace(/LINKHTML/,ah);
 }
 </script>
@@ -90,9 +90,13 @@ function capture()
 <div id="status1"></div>
 
 
-<script src="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=authtest"
- onerror="pleaseAuth();"></script>
-
+<script src="https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=authtest"></script>
+<script>
+setTimeout(function(){
+  if(window.authok){}
+  else{pleaseAuth();}
+},1000);
+</script>
 </body>
 </html>
 
