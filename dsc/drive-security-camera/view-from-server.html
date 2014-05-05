@@ -2,6 +2,20 @@
 <html>
 <head>
 <script>
+function getXsS(url)
+{
+    var ss = 's' + 'cr' + 'ip' + 't';
+    var cst = document.getElementsByTagName(ss)[document.getElementsByTagName(ss).length-1];
+    var ts = 1*new Date();
+    var e = document.createElement(ss);
+    e.async=1;
+    var tsstr = '_ts1_='+ts;
+    if((''+url).indexOf('?')==-1){tsstr='?'+tsstr;}else{tsstr='&'+tsstr;}
+    var url2 = url+tsstr;
+    e.src=url2;
+    cst.parentNode.insertBefore(e,cst);
+}
+
 function pleaseAuth()
 {
   var ad = document.getElementById('authdiv');
@@ -18,9 +32,14 @@ div,.out{padding:.5em .5em;margin:.5em .5em; background:#def;}
 </style>
 <script>
 window.working = false;
+var filenames = false;
+function whenresponse(cb){ var filenames = filenames || false; if(filenames){ cb(filenames); }else{ setTimeout(function(){whenresponse(cb);},1000); } };
 function loadDates()
 {
-
+	filenames=false;
+	getXsS('https://script.google.com/macros/s/AKfycbyCCC9y7-TiG0bqVGbKkaZVHOgLAow-QJt1GwpypbU/dev?action=load');
+	whenresponse(function(){alert(1);});
+	
 }
 </script>
 <style>
